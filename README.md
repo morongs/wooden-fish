@@ -46,8 +46,9 @@
 ```shell
 $ git clone https://github.com/Ares-Chang/wooden-fish.git
 $ cd wooden-fish
-$ npm install
-$ npm run dev
+$ npm install -g pnpm
+$ pnpm install
+$ pnpm run dev
 ```
 
 **强推一个小工具 [ni](https://github.com/antfu/ni) ，用上之后爱不释手。**

@@ -82,7 +82,7 @@ export function Silder() {
           ref={point}
           w-10
           h-10
-          bg-white='/80'
+          bg-white='/100'
           rd-5
           absolute
           cursor-pointer

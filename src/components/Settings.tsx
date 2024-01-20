@@ -7,7 +7,7 @@ export function Settings(props: { onClose: () => void }) {
       fixed
       top-0
       left-0
-      bg-black='/50'
+      bg-black='/80'
       flex='~ wrap'
       gap-6
       justify-center

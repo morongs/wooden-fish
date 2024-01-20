@@ -8,6 +8,7 @@ import { useCreateBGM, useSound } from './composables/useSound'
 
 const [zoom, setZoom] = createSignal(false)
 const [show, setShow] = createSignal(false) // 设置 Settings 显隐
+const [concatShow, setConcatShow] = createSignal(false) // 设置 联系我 显隐
 
 const bgm = useCreateBGM(store.volume / 100)
 const sound = new useSound(store.sound)
@@ -54,7 +55,7 @@ const App: Component = () => {
       py-4
       md:py-6
       text-center
-      bg='#111'
+      bg="#111"
       color-white
       flex='~ col'
       justify-between
@@ -65,7 +66,7 @@ const App: Component = () => {
       }}>
       <header>
         <div flex justify-between items-center>
-          <AresChang />
+          <Logo />
           <div text-2xl flex items-center gap-2>
             <i
               i-carbon-music
@@ -114,7 +115,7 @@ const App: Component = () => {
           cursor-pointer
           draggable={false}
           style={{
-            transform: `scale(${zoom() ? 0.99 : 1})`,
+            transform: `scale(${zoom() ? 0.95 : 1})`,
             '-webkit-tap-highlight-color': 'transparent'  // 清除移动端 touch 高亮效果
           }}
         />
@@ -123,10 +124,7 @@ const App: Component = () => {
       <footer color='#444'>
         <div font-bold text-sm>
           <div mb='1.5'>
-            按下
-            <code class={styles.code}>Space</code>或
-            <code class={styles.code}>Click</code>
-            积攒功德
+            点击上面木鱼积攒功德
           </div>
           <div>
             点击
@@ -142,8 +140,19 @@ const App: Component = () => {
             开启/关闭 沉浸模式
           </div>
         </div>
-        <div flex justify-between md:text-lg mt-6 font-bold>
-          <a
+        <div mt-8>
+          <div
+            
+            color='hover:#eee'
+            text-xs
+            onClick={() => setConcatShow(true)}
+          >
+            <i relative top-2px i-carbon-qr-code inline-block mr-1></i>
+            <span>欢迎与我联系提建议</span>
+          </div>
+        </div>
+        {/*<div flex justify-between md:text-lg mt-6 font-bold>
+           <a
             href='https://www.github.com/ares-chang/wooden-fish'
             target='_blank'
             color='hover:#eee'
@@ -155,11 +164,14 @@ const App: Component = () => {
           </a>
           <a href='https://www.github.com/ares-chang' color='hover:#eee'>
             @AresChang
-          </a>
-        </div>
+          </a> 
+        </div>*/}
       </footer>
       <Show when={show()}>
         <Settings onClose={() => setShow(false)} />
+      </Show>
+      <Show when={concatShow()}>
+        <Concat onClose={() => setConcatShow(false)} />
       </Show>
     </div>
   )
